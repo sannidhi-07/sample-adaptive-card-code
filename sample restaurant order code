@@ -1,0 +1,101 @@
+{
+	"type": "AdaptiveCard",
+	"$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+	"version": "1.5",
+	"body": [
+		{
+			"type": "TextBlock",
+			"size": "medium",
+			"weight": "bolder",
+			"text": "${seller.name}",
+			"style": "heading",
+			"wrap": true
+		},
+		{
+			"type": "TextBlock",
+			"text": "Your takeout order is ready for pickup!",
+			"wrap": true
+		},
+		{
+			"type": "FactSet",
+			"facts": [
+				{
+					"title": "Order number",
+					"value": "${orderNumber}"
+				},
+				{
+					"title": "Time placed",
+					"value": "{{TIME(${string(timePlaced)}}"
+				},
+				{
+					"title": "Est. pickup",
+					"value": "{{TIME(${string(expectedArrival)}}"
+				}
+			],
+			"spacing": "small"
+		},
+		{
+			"type": "Container",
+			"items": [
+				{
+					"type": "FactSet",
+					"facts": [
+						{
+							"title": "1x",
+							"value": "Steak"
+						},
+						{
+							"title": "2x",
+							"value": "Side Rice"
+						},
+						{
+							"title": "1x",
+							"value": "Soft Drink"
+						}
+					],
+					"spacing": "small"
+				}
+			],
+			"spacing": "small"
+		},
+		{
+			"type": "ColumnSet",
+			"columns": [
+				{
+					"type": "Column",
+					"width": "auto",
+					"items": [
+						{
+							"type": "TextBlock",
+							"text": "Total",
+							"isSubtle": true,
+							"wrap": true
+						}
+					]
+				},
+				{
+					"type": "Column",
+					"width": "stretch",
+					"items": [
+						{
+							"type": "TextBlock",
+							"text": "$${acceptedOffer.price}",
+							"horizontalAlignment": "right",
+							"weight": "bolder",
+							"wrap": true
+						}
+					]
+				}
+			],
+			"spacing": "small",
+			"separator": true
+		}
+	],
+	"actions": [
+		{
+			"type": "Action.OpenUrl",
+			"title": "Directions",
+			"url": "http://contososcubademo.azurewebsites.net"
+		}
+	]
+}

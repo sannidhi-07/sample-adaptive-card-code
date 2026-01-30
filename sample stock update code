@@ -1,0 +1,138 @@
+{
+	"type": "AdaptiveCard",
+	"$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+	"version": "1.5",
+	"body": [
+		{
+			"type": "TextBlock",
+			"text": "Stock Update",
+			"weight": "bolder",
+			"size": "medium",
+			"style": "heading",
+			"wrap": true
+		},
+		{
+			"type": "ColumnSet",
+			"columns": [
+				{
+					"type": "Column",
+					"width": "auto",
+					"items": [
+						{
+							"type": "Image",
+							"url": "${logo}",
+							"altText": "${CompanyName} Logo",
+							"size": "small"
+						}
+					]
+				},
+				{
+					"type": "Column",
+					"width": "stretch",
+					"items": [
+						{
+							"type": "TextBlock",
+							"text": "${Symbol}",
+							"weight": "bolder",
+							"wrap": true
+						},
+						{
+							"type": "TextBlock",
+							"text": "${CompanyName}",
+							"isSubtle": true,
+							"spacing": "none",
+							"wrap": true
+						}
+					]
+				}
+			]
+		},
+		{
+			"type": "FactSet",
+			"facts": [
+				{
+					"title": "Current Price",
+					"value": "${currentPrice}"
+				},
+				{
+					"title": "Updated At",
+					"value": "{{TIME(${string(updatedAt)}}"
+				}
+			]
+		},
+		{
+			"type": "ColumnSet",
+			"columns": [
+				{
+					"type": "Column",
+					"width": "stretch",
+					"items": [
+						{
+							"type": "TextBlock",
+							"text": "24h High",
+							"isSubtle": true,
+							"wrap": true
+						},
+						{
+							"type": "TextBlock",
+							"text": "${high}",
+							"size": "large",
+							"spacing": "small",
+							"wrap": true
+						}
+					]
+				},
+				{
+					"type": "Column",
+					"width": "stretch",
+					"items": [
+						{
+							"type": "TextBlock",
+							"text": "24h Low",
+							"isSubtle": true,
+							"horizontalAlignment": "center",
+							"wrap": true
+						},
+						{
+							"type": "TextBlock",
+							"text": "${low}",
+							"size": "large",
+							"horizontalAlignment": "center",
+							"spacing": "small",
+							"wrap": true
+						}
+					]
+				},
+				{
+					"type": "Column",
+					"width": "stretch",
+					"items": [
+						{
+							"type": "TextBlock",
+							"text": "Change",
+							"isSubtle": true,
+							"horizontalAlignment": "right",
+							"wrap": true
+						},
+						{
+							"type": "TextBlock",
+							"text": "${change}",
+							"size": "large",
+							"color": "${changeColor}",
+							"horizontalAlignment": "right",
+							"spacing": "small",
+							"wrap": true
+						}
+					]
+				}
+			]
+		}
+	],
+	"actions": [
+		{
+			"type": "Action.OpenUrl",
+			"title": "View Stock Chart",
+			"url": "${chartUrl}"
+		}
+	]
+}
